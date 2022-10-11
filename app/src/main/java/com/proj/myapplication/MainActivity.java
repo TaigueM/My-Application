@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (appearrule== false){
+                if (appearrule== false){ // game rules button
                txv.setText("Sudoku is played on a grid of 9*9 spaces. Within the Rows and Columns are"
                + " 9 'Squares' of 3*3 spaces. Each row, column and squares need to be filled oout"+
                        " with numbers 1-9, without repeating digits within the rows, columns and squares "+
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         button3.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // "how to play" button
                 if (appearrule== false){
                     txv.setText("A grid will be created at the start of the game. The 'Blue' coloured numbers are the set values of the board. "+
                             "The player can access the board by tapping on the blank or 'black' coloured numbers and the number will increase (up to 9) "+
