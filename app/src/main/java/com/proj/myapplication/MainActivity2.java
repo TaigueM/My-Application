@@ -88,7 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
 
         }
-        return true;//returns at the end of checking if there is no 0's
+        return true;//returns at the end of checking if there is no 0's/ no blanks
     }
 
     boolean correctrs(int x1, int x2, int y1, int y2){
