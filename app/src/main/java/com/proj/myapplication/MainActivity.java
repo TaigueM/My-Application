@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (appearrule== false){ // game rules button
                txv.setText("Sudoku is played on a grid of 9*9 spaces. Within the Rows and Columns are"
-               + " 9 'Squares' of 3*3 spaces. Each row, column and squares need to be filled oout"+
+               + " 9 'Squares' of 3*3 spaces. Each row, column and squares need to be filled out"+
                        " with numbers 1-9, without repeating digits within the rows, columns and squares "+
                        "The play wins as a result of filling the board with this criteria");
                 appearrule = true;}
