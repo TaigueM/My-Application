@@ -7,7 +7,7 @@ Group name: Group-T-Sudoku
  Group members: Sinethemba Ndwandwe
                    Masilela Sibongiseni
                	      Lathitha Stamper
-               	      Mitchel Taigue
+               	      Mitchell Taigue
 Group mentor: Alden Boby
 Project title: Sudoku Application
 Project page: github.com/TaigueM/Sudoku-Group-T.
