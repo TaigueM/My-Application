@@ -4,10 +4,10 @@ This is a computer science 102 project aimed at producing a Sudoku application. 
 We are unable to gather who did what work as a result. The original repository including the .java can be found at https://github.com/TaigueM/Group-T-Sudoku.
 
 Group name: Group-T-Sudoku
- Group members: Sinethemba Ndwandwe
-                   Masilela Sibongiseni
-               	      Lathitha Stamper
-               	      Mitchell Taigue
+ Group members: Sinethemba Ndwandwe, 
+                   Masilela Sibongiseni, 
+               	      Lathitha Stamper, 
+               	      Taigue Mitchell.
 Group mentor: Alden Boby
 Project title: Sudoku Application
 Project page: github.com/TaigueM/Sudoku-Group-T.
