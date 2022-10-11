@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         button2.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (appearrule== false){ // game rules button
+            public void onClick(View v) {// game rules button
+                if (appearrule== false){ 
                txv.setText("Sudoku is played on a grid of 9*9 spaces. Within the Rows and Columns are"
                + " 9 'Squares' of 3*3 spaces. Each row, column and squares need to be filled out"+
                        " with numbers 1-9, without repeating digits within the rows, columns and squares "+
