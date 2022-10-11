@@ -35,31 +35,31 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
             bt = new Button(THIS);
-            if (fixed){ //works because each button has its own fixed value attributed to it initialised values are set to true and can be changed
+            if (fixed){ //sets each instance the button to a boolean to determine whther it was fixed on creation and immutable
                 bt.setTextColor(Color.BLUE);
                 bt.setText(String.valueOf(val));
 
             }else{
-                bt.setTextColor(Color.BLACK);
+                bt.setTextColor(Color.BLACK);//if button can change the value it will be coloured black
             }
             bt.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    if (fixed != false) return; //value is not what is
+                    if (fixed != false) return; //if a button  is pressed that is fixed, nothing will happen
                     val++; //increases the value until the user is satisfied
                     if (val> 9){ //units above 9 revert to one
                         val = 1;
                     }
                     bt.setText(String.valueOf(val));//toString
-                    if (IsComplete() == true){
+                    if (IsComplete() == true){//if the board is filled in completely
                         t.setText("");
-                        if (check() == true){
+                        if (check() == true){ //if the solution is correct
                             t.setText("Congratualtions the board has been solved");
                         }else{
                             t.setText("There is a repeated digit");
                         }
                     }else{
-                        t.setText("Puzzle Remains incomplete");
+                        t.setText("Puzzle Remains incomplete");//if the board remains unfilled
                     }
                 }
             });
@@ -69,8 +69,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-    Cell[][] table;
-    String inp;
+    Cell[][] table;//android studio equivalent to a 2d array that helps with creating a visual
+    String inp;//the board in string form
     TableLayout tl;
     LinearLayout lay;
     TextView t;
@@ -117,16 +117,16 @@ public class MainActivity2 extends AppCompatActivity {
     Boolean check(){
 
         for (int x =0; x<9; x++){
-            if (correctrs(x, 0, x, 9) == false){
+            if (correctrs(x, 0, x, 9) == false){//check rows
                 return false;
             }
             for (int y = 0; y < 9; y++){
-                if (correctrs(0, y, 9, y) == false) {return false;}
+                if (correctrs(0, y, 9, y) == false) {return false;}//check columns
             }
         }
         for (int x = 0; x< 3; x++){
             for (int y = 0; y<3;y++){
-                if (correctrs(3*x, 3*y, 3*x+3, 3*y+3) == false){
+                if (correctrs(3*x, 3*y, 3*x+3, 3*y+3) == false){//check subgrids 
                     return false;
                 }
             }
@@ -198,7 +198,7 @@ public class MainActivity2 extends AppCompatActivity {
             indob[i] = ""+ inp.charAt(i);
         }
         //String[] split = inp.split(" ");
-        table = new Cell[9][9];
+        table = new Cell[9][9];//new instance of table
         tl = new TableLayout(this);
         for (int x = 0; x<9; x++){
             TableRow tr = new TableRow(this);
