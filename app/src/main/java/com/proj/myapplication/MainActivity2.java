@@ -324,7 +324,7 @@ public class MainActivity2 extends AppCompatActivity {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
 
-
+//text
                 txboard+= data;
 
 
