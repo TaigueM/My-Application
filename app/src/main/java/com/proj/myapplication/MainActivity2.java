@@ -42,6 +42,9 @@ public class MainActivity2 extends AppCompatActivity {
             }else{
                 bt.setTextColor(Color.BLACK);//if button can change the value it will be coloured black
             }
+
+
+
             bt.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -53,8 +56,9 @@ public class MainActivity2 extends AppCompatActivity {
                     bt.setText(String.valueOf(val));//toString
                     if (IsComplete() == true){//if the board is filled in completely
                         t.setText("");
-                        if (check() == true){ //if the solution is correct
+                        if (checkcr() == true && checksubgrid()){ //if the solution is correct
                             t.setText("Congratualtions the board has been solved");
+
                         }else{
                             t.setText("There is a repeated digit");
                         }
@@ -65,6 +69,9 @@ public class MainActivity2 extends AppCompatActivity {
             });
 
 
+
+
+
             }
 
     }
@@ -73,8 +80,8 @@ public class MainActivity2 extends AppCompatActivity {
     String inp;//the board in string form
     TableLayout tl;
     LinearLayout lay;
-    TextView t;
-    Button chng;
+    TextView t , h;
+    Button chng, hint;
     boolean boardchange = false;
 
     boolean IsComplete(){
@@ -89,6 +96,35 @@ public class MainActivity2 extends AppCompatActivity {
 
         }
         return true;//returns at the end of checking if there is no 0's/ no blanks
+    }
+    boolean isrowsum(int x){//calculate columns sum to 45 if the row is correct hints
+        int sum = 0;
+
+
+        for (int y = 0; y < 9; y++){
+            sum+= table[x][y].val;//check columns
+        }
+
+        if (sum == 45){
+        return true;}
+        else{
+            return false;
+        }
+    }
+
+    boolean iscolsum(int y){//calculate columns sum to 45 if the row is correct hints
+        int sum = 0;
+
+
+        for (int x = 0; x < 9; x++){
+            sum+= table[x][y].val;//check columns
+        }
+
+        if (sum == 45){
+            return true;}
+        else{
+            return false;
+        }
     }
 
     boolean correctrs(int x1, int x2, int y1, int y2){
@@ -113,8 +149,18 @@ public class MainActivity2 extends AppCompatActivity {
         }
         return true;
     }
+    Boolean checksubgrid(){
+        for (int x = 0; x< 3; x++){
+            for (int y = 0; y<3;y++){
+                if (correctrs(3*x, 3*y, 3*x+3, 3*y+3) == false){//check subgrids
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
-    Boolean check(){
+    Boolean checkcr(){
 
         for (int x =0; x<9; x++){
             if (correctrs(x, 0, x, 9) == false){//check rows
@@ -124,13 +170,7 @@ public class MainActivity2 extends AppCompatActivity {
                 if (correctrs(0, y, 9, y) == false) {return false;}//check columns
             }
         }
-        for (int x = 0; x< 3; x++){
-            for (int y = 0; y<3;y++){
-                if (correctrs(3*x, 3*y, 3*x+3, 3*y+3) == false){//check subgrids 
-                    return false;
-                }
-            }
-        }
+
         return true;
     }
     //}
@@ -161,12 +201,47 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+
+
          //ActionBar actionBar = getActionBar();
         // actionBar.setDisplayHomeAsUpEnabled(true);
 
         //inp =txtboard();
 
 
+    }
+    public void Help(){
+        hint.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean rboo = false; //checks the rows and if there is an error there it will indicate
+                for (int x = 0; x<9; x++){
+                    if (!isrowsum(x)  ){
+                        h.setText("Hint: There is a repeated digit, blank or inconsistency in  row " + (x+1) + "." );
+                        rboo = true;
+                        break;
+                    }else{
+                        h.setText("Rows are fine");
+
+                    }
+                }
+                if (rboo = false){ //if there was no error in the rows it will check the columns
+                    for (int y = 0; y<9; y++)
+
+                    {
+                        if (!iscolsum(y)) {
+                            h.setText("Hint: There is a repeated digit or blank  in  column " + (y + 1) + ".");
+
+                            break;
+                        } else {
+                            h.setText("Rows are fine");
+
+                        }
+                    }
+                }}
+
+
+        });
     }
 
     public void boardgen(boolean board){
@@ -216,16 +291,27 @@ public class MainActivity2 extends AppCompatActivity {
         tl.setShrinkAllColumns(true); //both methods used to shrink or stretch the buttons to match screen size
         tl.setStretchAllColumns(true);
         t = new TextView(this);
+        h = new TextView(this);
+
         chng = new Button(this);
         chng.setText("change board");
+        hint = new Button(this);
+        hint.setText("Hint");
+
+
         lay = new LinearLayout(this);
 
         lay.addView(tl);
         lay.addView(t);
+        lay.addView(h);
         lay.addView(chng);
+        lay.addView(hint);
         lay.setOrientation(LinearLayout.VERTICAL);
 
         setContentView(lay);
+
+
+       Help();
     }
 
     // Board from textfile errors occured which ruined initial programing and redoing of project so this idea is scrapped for time being
