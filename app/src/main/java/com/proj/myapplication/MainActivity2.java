@@ -234,7 +234,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                             break;
                         } else {
-                            h.setText("Rows are fine");
+                            h.setText("Columns are fine");
 
                         }
                     }
